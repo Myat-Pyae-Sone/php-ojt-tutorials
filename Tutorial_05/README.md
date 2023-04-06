@@ -1,6 +1,6 @@
 # Tutorial 05
 
-## Read Excel, CSV, Doc And Text files.
+## Read Excel, CSV, Doc And text files.
 
 ## Folder Structure
 
@@ -10,7 +10,7 @@
 │   ├── reset.css
 │   └── style.css
 ├── demo/
-│   └── text.png
+│   └── preview.png
 ├── files/
 │   └── sample.csv
 │   └── sample.doc
@@ -21,4 +21,4 @@
 └── README.md
 ```
 
-![text.png](demo/text.png)
+![preview.png](demo/preview.png)

@@ -1,46 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Read Files</title>
-  <link rel="stylesheet" href="libs/bootstrap-4.0.0-dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="libs/PHPWord-master/">
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body class="col-8 offset-2 ms-2 border border-light p-3">
-  <div class="file">
-    <div class="text-file">
-      <h1>Text File</h1>
-      <hr>
-      <?php readTextFile();?>
-    </div>
-    <div class="doc-file">
-      <h1 class="pt-5">Document File</h1>
-      <hr>
-      <?php readDocFile();?>
-    </div>
-    <div class="csv-file">
-      <h1 class="pt-5">Csv File</h1>
-      <hr>
-      <?php readCsvFile();?>
-    </div>
-    <div class="excel-file">
-      <h1 class="pt-5">Excel File</h1>
-      <hr>
-
-      <?php readExcelFile();?>
-
-    </div>
-
-  </div>
-</body>
-
-</html>
 <?php
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
@@ -115,7 +72,6 @@ function readCsvFile()
         $headers = preg_split('/\s+/', $d); //split whitespace between headers
         foreach ($headers as $header) {
             $html .= "<th>" . $header . "</th>"; //put table headers
-
         }
 
     }
@@ -128,9 +84,7 @@ function readCsvFile()
 
             foreach ($cells as $cell) {
                 $html .= "<td>" . $cell . "</td>"; //put table contents
-
             }
-
         }
         $html .= '</tr>';
 
@@ -164,3 +118,45 @@ function readExcelFile()
     $html .= "</table>";
     echo $html; //output table
 }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Read Files</title>
+  <link rel="stylesheet" href="libs/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="libs/PHPWord-master/">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="col-10 mt-5 offset-1 ms-2 border border-light p-3">
+  <div class="file">
+    <div class="text-file">
+      <h1>Text File</h1>
+      <hr>
+      <?php readTextFile();?>
+    </div>
+    <div class="doc-file">
+      <h1 class="pt-5">Document File</h1>
+      <hr>
+      <?php readDocFile();?>
+    </div>
+    <div class="csv-file">
+      <h1 class="pt-5">Csv File</h1>
+      <hr>
+      <?php readCsvFile();?>
+    </div>
+    <div class="excel-file">
+      <h1 class="pt-5">Excel File</h1>
+      <hr>
+      <?php readExcelFile();?>
+    </div>
+  </div>
+</body>
+
+</html>

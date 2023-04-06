@@ -12,6 +12,7 @@ include 'upload.php';
   <title>Image Upload</title>
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+
 </head>
 
 <body>
@@ -53,9 +54,7 @@ foreach ($files as $file) {
     echo "<input type='submit' class='btn btn-danger w-100   mb-3 pt-2 pb-3  text-dark' name='delete' value='Delete'>";
     echo "</form>";
     echo "</div>";
-
 }
-
 echo "</div>";
 if (isset($_POST['delete'])) {
     $filePath = $_POST['file_path'];

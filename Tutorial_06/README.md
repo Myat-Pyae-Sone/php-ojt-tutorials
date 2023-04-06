@@ -27,4 +27,4 @@ index.php
 - Image File extesion must be (JPG,PNG,JPEG)
 - Image File size must be less than 2000
 
-![sample.png](demo/sample.png)
+![preview.png](demo/preview.png)
