@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitaf517c198f0e88b3177efba038a9a4c7
+class ComposerStaticInit991c58acbbf4feff1aa44cc59cf836a3
 {
     public static $files = array (
         '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
@@ -20,12 +20,17 @@ class ComposerStaticInitaf517c198f0e88b3177efba038a9a4c7
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
+            'PhpOffice\\PhpWord\\' => 18,
             'PhpOffice\\PhpSpreadsheet\\' => 25,
         ),
         'M' => 
         array (
             'MyCLabs\\Enum\\' => 13,
             'Matrix\\' => 7,
+        ),
+        'L' => 
+        array (
+            'Laminas\\Escaper\\' => 16,
         ),
         'C' => 
         array (
@@ -44,12 +49,16 @@ class ComposerStaticInitaf517c198f0e88b3177efba038a9a4c7
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
+        ),
+        'PhpOffice\\PhpWord\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpword/src/PhpWord',
         ),
         'PhpOffice\\PhpSpreadsheet\\' => 
         array (
@@ -63,6 +72,10 @@ class ComposerStaticInitaf517c198f0e88b3177efba038a9a4c7
         array (
             0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
         ),
+        'Laminas\\Escaper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laminas/laminas-escaper/src',
+        ),
         'Complex\\' => 
         array (
             0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
@@ -70,6 +83,13 @@ class ComposerStaticInitaf517c198f0e88b3177efba038a9a4c7
     );
 
     public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PHPExcel' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
+            ),
+        ),
         'H' => 
         array (
             'HTMLPurifier' => 
@@ -87,10 +107,10 @@ class ComposerStaticInitaf517c198f0e88b3177efba038a9a4c7
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitaf517c198f0e88b3177efba038a9a4c7::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitaf517c198f0e88b3177efba038a9a4c7::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitaf517c198f0e88b3177efba038a9a4c7::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitaf517c198f0e88b3177efba038a9a4c7::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit991c58acbbf4feff1aa44cc59cf836a3::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit991c58acbbf4feff1aa44cc59cf836a3::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit991c58acbbf4feff1aa44cc59cf836a3::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit991c58acbbf4feff1aa44cc59cf836a3::$classMap;
 
         }, null, ClassLoader::class);
     }

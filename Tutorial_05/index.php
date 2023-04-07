@@ -1,14 +1,13 @@
 <?php
 
 use PhpOffice\PhpSpreadsheet\IOFactory;
-require "vendor/autoload.php";
+require 'vendor/autoload.php';
 /**
- * function read text file
+ * readTxtFile function
  *
- *
- * @return void
+ * @return string
  */
-function readTextFile()
+function readTxtFile()
 {
     $file = "./files/sample.txt";
     $sampleFile = file_get_contents($file); //get contents from txt file
@@ -16,22 +15,19 @@ function readTextFile()
     foreach ($lines as $newLine) {
         echo $newLine . '<br>';
     }
+
 }
-
 /**
- * function read document file
+ * readWord function
  *
- *
- * @return void
+ * @param string $filename
+ * @return string
  */
-
-function readDocFile()
+function readDocumentFile($filename)
 {
-    $filename = './files/sample.doc';
-    $openFile = fopen($filename, 'r'); //open file with readonly mode
     if (file_exists($filename)) {
-        if (($fh = $openFile) !== false) {
-            $headers = fread($fh, 0xA00); //formula for charatacters
+        if (($fh = fopen($filename, 'r')) !== false) {
+            $headers = fread($fh, 0xA00);
 
             // 1 = (ord(n)*1) ; Document has from 0 to 255 characters
             $n1 = (ord($headers[0x21C]) - 1);
@@ -48,18 +44,17 @@ function readDocFile()
             // Total length of text in the document
             $textLength = ($n1 + $n2 + $n3 + $n4);
 
-            $extracted_plaintext = fread($fh, $textLength); //read data
-            echo nl2br($extracted_plaintext); // output characters  without new lines
+            $extracted_plaintext = fread($fh, $textLength);
+            return nl2br($extracted_plaintext);
         }
     }
-    fclose($openFile); //close file
 }
 
 /**
- * function read Csv file
+ * readCsvFile function
  *
  *
- * @return void
+ * @return string
  */
 function readCsvFile()
 {
@@ -93,33 +88,37 @@ function readCsvFile()
     $html .= '</table>';
     fclose($file); //close the file
     echo $html; //ouput table
-}
 
+}
 /**
- * function read Csv file
- *
+ * readExcelFile function
  *
  * @return void
  */
 function readExcelFile()
 {
-    $file = 'files/sample.xlsx';
-    $sheet = IOFactory::load($file);
-    $reader = $sheet->getActiveSheet();
-    $lines = $reader->toArray(); //change to array
+    // Load the Excel file
+    $inputFileName = 'files/sample.xlsx';
+    $spreadsheet = IOFactory::load($inputFileName);
+
+    // Get the data from the Excel file
+    $worksheet = $spreadsheet->getActiveSheet();
+    $rows = $worksheet->toArray();
+
+    // Display the data in a table
     $html = "<table class='table'>";
-    foreach ($lines as $line) {
+    foreach ($rows as $row) {
         $html .= "<tr>";
-        foreach ($line as $data) {
-            $html .= "<td>" . $data . "</td>";
+        foreach ($row as $cell) {
+            $html .= "<td>" . $cell . "</td>";
         }
         $html .= "</tr>";
     }
     $html .= "</table>";
-    echo $html; //output table
+    echo $html;
 }
-?>
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,34 +126,34 @@ function readExcelFile()
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Read Files</title>
-  <link rel="stylesheet" href="libs/bootstrap-4.0.0-dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="libs/PHPWord-master/">
+  <title>Reading Files</title>
   <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="libs/bootstrap-5.0.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
+
 </head>
 
-<body class="col-10 mt-5 offset-1 ms-2 border border-light p-3">
-  <div class="file">
-    <div class="text-file">
-      <h1>Text File</h1>
+<body>
+  <div class="card col-10 offset-1 p-4 mt-5">
+    <div class="txt-file mb-5">
+      <h1 class="fs-3">Text File</h1>
       <hr>
-      <?php readTextFile();?>
+      <?php echo readTxtFile(); ?>
     </div>
-    <div class="doc-file">
-      <h1 class="pt-5">Document File</h1>
+    <div class="doc-file mb-5">
+      <h1 class="fs-3">Document File</h1>
       <hr>
-      <?php readDocFile();?>
+      <?php echo readDocumentFile('files/sample.doc'); ?>
     </div>
-    <div class="csv-file">
-      <h1 class="pt-5">Csv File</h1>
+    <div class="csv-file mb-5">
+      <h1 class="fs-3">CSV File</h1>
       <hr>
-      <?php readCsvFile();?>
+      <?php echo readCsvFile('files/sample.csv'); ?>
     </div>
-    <div class="excel-file">
-      <h1 class="pt-5">Excel File</h1>
+    <div class="excel-file mb-5">
+      <h1 class="fs-3">Excel File</h1>
       <hr>
-      <?php readExcelFile();?>
+      <?php echo readExcelFile(); ?>
     </div>
   </div>
 </body>

@@ -37,7 +37,7 @@ if (isset($_POST['create'])) {
     $qrCode = $_POST["qrName"];
     require_once 'libs/phpqrcode/qrlib.php';
     $path = 'images/';
-    $code = $path . $qrCode . ".png"; //create file
+    $code = $path . $qrCode . ".png";
     if (!file_exists($code)) {
         QRcode::png($qrCode, $code, 'H', 6, 6);
         echo "<p class='text-center mt-4'><img src='$code' ></p>";
@@ -53,7 +53,7 @@ echo "<div class='card-header bg-light p-3'>";
 echo "<h2 class=' bg-light'>QR List</h2>";
 
 $target_dir = "images/";
-$file = scandir($target_dir); //scan directory
+$file = scandir($target_dir);
 echo "<div class='card-body bg-white'>";
 for ($i = 0; $i < count($file); $i++) {
     if ($file[$i] != '.' && $file[$i] != '..') {

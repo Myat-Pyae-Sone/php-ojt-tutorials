@@ -11,33 +11,32 @@ include 'upload.php';
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Image Upload</title>
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="lib/css/bootstrap.min.css">
+  <link rel="stylesheet" href="lib/boostrap/css/bootstrap.min.css">
 
 </head>
 
 <body>
-  <div class="card col-4 offset-4 mt-3">
+  <div class="card col-4 offset-4 mt-5">
     <div class="card-header">
-      <h1 class="mt-2  fs-3">Upload Image</h1>
+      <h1 class="mt-2 text-center fs-3">Upload Image</h1>
     </div>
     <div class="card-body ">
-      <form action="" method="post" class="needs-validation " novalidate enctype="multipart/form-data">
+      <form class="needs-validation form-group" action="" method="POST" novalidate enctype="multipart/form-data">
         <label class="form-label">Folder Name</label>
         <input type="text" name="file" id="" class="form-control" placeholder="Enter Folder Name" required>
-        <span class="invalid-feedback"> Required Folder Name!</span>
-        <label class="form-label">Choose Image</label>
+        <small class="invalid-feedback">folder name field is required! </small>
+        <label class="form-label mt-3">Choose Image</label>
         <input type="file" name="fileimg" id="" class="form-control" aria-label="file example" required>
-        <span class="invalid-feedback"> Required Image Name!</span>
+        <small class="invalid-feedback">Image name field is required! </small>
         <input type="submit" value="Upload" name="upload" class="btn btn-primary text-light w-100 mt-3 border-0">
       </form>
     </div>
   </div>
-  <script src="lib/js/form_validation.js"></script>
-  <script>
-  </script>
+  <script src="lib/boostrap/js/form_validation.js"></script>
 </body>
 
 </html>
+
 <?php
 echo "<div class='card col-8 offset-2 mt-3 bg-light' >";
 $files = glob('images/*/*.jpg'); //find file path
@@ -64,4 +63,3 @@ if (isset($_POST['delete'])) {
         ob_end_flush();
     }
 }
-echo "</div>";

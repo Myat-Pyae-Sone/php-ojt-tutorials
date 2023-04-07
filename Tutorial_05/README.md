@@ -1,12 +1,12 @@
 # Tutorial 05
 
-## Read Excel, CSV, Doc And text files.
+## Read Excel, CSV, Doc And Text files.
 
 ## Folder Structure
 
 ```
 .
-├── ccs/
+├── cSS/
 │   ├── reset.css
 │   └── style.css
 ├── demo/
@@ -16,9 +16,10 @@
 │   └── sample.doc
 │   └── sample.txt
 │   └── sample.xlsx
-├── libs
+├── libs 
+│   └──  bootstrap-5.0.2
 ├── index.php
 └── README.md
 ```
 
-![preview.png](demo/preview.png)
+![preview.jpg](demo/preview.jpg)
