@@ -1,38 +1,64 @@
 <?php
 
+session_start();
 if (isset($_POST['upload'])) {
-    $folderName = $_POST['file'];
-    $path = "images/$folderName";
-    if (!file_exists($path)) {
-        $newFolder = mkdir("images" . "/$folderName", 0777, true); //create directory of folder
-        $imgName = $_FILES['fileimg']['name'];
-        $tmp = $_FILES['fileimg']['tmp_name'];
-        $target_file = "images/$folderName/" . $imgName;
-        $image_file = "images/$folderName/$imgName";
-        if (file_exists("images/$folderName/$imgName")) {
-            echo "<script>alert('Your image is already exit.')</script>";
-        } else {
-            if (move_uploaded_file($tmp, $target_file)) {
-                move_uploaded_file($tmp, $target_file);
-                echo "<p class='alert alert-info  col-4 offset-4 mt-3  p-3 text-primary'>Upload Image Successfully!</p>";
-            } else {
-                echo "error";
-            }
-        }
-    } else {
-        $imgName = $_FILES['fileimg']['name'];
-        $tmp = $_FILES['fileimg']['tmp_name'];
+    $folderName = $_POST['folder'];
+    $imageName = $_FILES['image'];
 
-        $target_file = "images/$folderName/" . $imgName;
-        if (file_exists("images/$folderName/$imgName")) {
-            echo "<script>alert('Your image is already exit.')</script>";
-        } else {
-            if (move_uploaded_file($tmp, $target_file)) {
-                move_uploaded_file($tmp, $target_file);
-                echo "<p class='alert alert-info  col-4 offset-4 mt-3  p-3 text-primary'>Upload Image Successfully!</p>";
-            } else {
-                echo "error";
-            }
+    //old value
+    $_SESSION['folderName'] = $folderName;
+
+    if (!empty($folderName) && !empty($imageName['name'])) {
+
+        //image extention validate
+        $allowedExt = array('jpg', 'jpeg', 'png');
+        $imgExt = strtolower(pathinfo($imageName['name'], PATHINFO_EXTENSION));
+
+        if (!in_array($imgExt, $allowedExt)) {
+            $_SESSION['errorMessage']['image'] = 'Image file extension must be jpg, jpeg or png.';
+            header('Location: index.php');
+            exit();
         }
+
+        //Save image
+        $folderPath = "images/$folderName";
+        if (!is_dir($folderPath)) {
+            mkdir($folderPath);
+        }
+        $imageFile = basename($imageName['name']);
+        $targetFile = $folderPath . '/' . $imageFile;
+
+        //if same image exists
+        if (file_exists($targetFile)) {
+            $_SESSION['errorMessage']['image'] = 'Image file already exists!';
+            header('Location: index.php');
+            exit();
+        }
+
+        if (move_uploaded_file($imageName['tmp_name'], $targetFile)) {
+            $_SESSION['alertMessage'] = 'Upload Image Successfully!';
+            unset($_SESSION['folderName']);
+            header('Location: index.php');
+        } else {
+            $_SESSION['errorMessage']['image'] = 'Upload  Failed!';
+            header('Location: index.php');
+        }
+
+        //image size validate
+        $fileSize = $_FILES['image']['size'];
+        if ($fileSize > 2097152) {
+            $_SESSION['errors']['image'] = 'Image file size must be less than 2 MB.';
+            header('Location: index.php');
+            exit();
+        }
+
+    } else {
+        if (empty($folderName)) {
+            $_SESSION['errorMessage']['folder'] = 'folder name field is required.';
+        }
+        if (empty($imageName['name'])) {
+            $_SESSION['errorMessage']['image'] = 'image name field is required.';
+        }
+        header('Location: index.php');
     }
 }
