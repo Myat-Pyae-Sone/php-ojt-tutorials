@@ -53,7 +53,7 @@ if (isset($_POST['upload'])) {
         }
 
     } else {
-        if (empty($folderName)) {
+        if (empty($folderName['folder'])) {
             $_SESSION['errorMessage']['folder'] = 'folder name field is required.';
         }
         if (empty($imageName['name'])) {
