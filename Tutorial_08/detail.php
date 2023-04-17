@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+require_once 'db.php';
 if (isset($_GET['viewid'])) {
     $id = $_GET['viewid'];
     $query = "SELECT * FROM lists WHERE id = '$id'";

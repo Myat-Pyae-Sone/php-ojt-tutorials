@@ -1,5 +1,5 @@
 <?php
-include "db.php";
+require_once "db.php";
 if (isset($_GET['deleteid'])) {
     $id = $_GET['deleteid'];
     $sql = "delete from lists where id=$id";

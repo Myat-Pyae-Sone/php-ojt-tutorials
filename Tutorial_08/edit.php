@@ -1,5 +1,5 @@
 <?php
-include 'db.php';
+require_once 'db.php';
 $title_error = $content_error = '';
 $title = $content = '';
 $id = $_GET['updateid'];
