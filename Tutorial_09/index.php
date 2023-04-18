@@ -1,7 +1,7 @@
 <?php
 require_once "db.php";
+require_once "_dummy.php";
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,17 +11,25 @@ require_once "db.php";
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>post list</title>
   <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="libs/bootstrap-5.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
 </head>
 
 <body>
 
   <div class="container mt-5">
 
-    <div class="btn btn-primary mb-3">
-      <a href="create.php" class="text-decoration-none text-light"> create</a>
+    <div class="card border-0">
+      <div class="card-body bg-light">
+        <div class="btn btn-primary mb-3">
+          <a href="create.php" class="text-decoration-none text-light"> create</a>
+        </div>
+        <div class="btn btn-primary mb-3">
+          <a href="graph/_weekly.php" class="text-decoration-none text-light"> graph</a>
+        </div>
+      </div>
     </div>
+
     <div class="card">
       <div class="card-header">
         <h2>Post List</h2>
@@ -40,7 +48,7 @@ require_once "db.php";
           </thead>
           <tbody>
             <?php
-$sql = "SELECT * FROM  lists";
+$sql = "SELECT * FROM lists LIMIT 5";
 $result = mysqli_query($conn, $sql);
 if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
@@ -57,8 +65,8 @@ if ($result) {
             $check_public = "published";
         }
 
-        if (strlen($content) > 50) {
-            $content = substr($content, 0, 50) . "...";
+        if (strlen($content) > 30) {
+            $content = substr($content, 0, 30) . "...";
         }
         if (strlen($title) >= 10) {
             $title = substr($title, 0, 10) . "...";
@@ -85,7 +93,6 @@ if ($result) {
 
     }
 }
-
 ?>
           </tbody>
         </table>
@@ -93,17 +100,10 @@ if ($result) {
     </div>
   </div>
 
-  <script src="libs/js/jquery-3.6.0.min.js"></script>
-  <script src="libs/bootstrap-5.0.2/js/bootstrap.min.js"></script>
-  <script>
-  $(document).ready(function() {
-    $('.delete-btn').on('click', function() {
-      var id = $(this).data('id');
-      if (confirm("Are you sure to delete this post?")) {
-        window.location.href = 'delete.php?deleteid=' + id;
-      }
-    });
-  });
-  </script>
+  <script src="js/jquery-3.6.0.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/model.js"></script>
 
-</body
+</body>
+
+</html>
