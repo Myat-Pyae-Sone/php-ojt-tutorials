@@ -1,6 +1,6 @@
 <?php
 session_start();
-require "libs/phpqrcode/qrlib.php";
+require_once "libs/phpqrcode/qrlib.php";
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['qrName'])) {
         $name = $_POST["qrName"]; //user input

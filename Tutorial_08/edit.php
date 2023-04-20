@@ -43,52 +43,53 @@ if (isset($_POST['edit'])) {
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>edit page</title>
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="libs/bootstrap-5.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit page</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="libs/bootstrap-5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <div class="container">
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-6 mt-5">
-        <div class="card">
-          <div class="card-header">
-            <h2>Edit Post</h2>
-          </div>
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-6 mt-5">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Edit Post</h2>
+                    </div>
 
-          <div class="card-body">
-            <form action="" method="post">
-              <div class="mb-3">
-                <label>Title</label>
-                <input type="text" class="form-control" name="title" value="<?php echo $data['title'] ?>">
-                <span class="text-danger"><?php echo $title_error; ?></span>
-              </div>
-              <div class="mb-3">
-                <label>Content</label>
-                <textarea name="content" rows="5" cols="30"
-                  class="form-control"><?php echo $data['content'] ?></textarea>
-                <span class="text-danger"><?php echo $content_error; ?></span>
-              </div>
-              <div class="mb-3">
-                <input type="checkbox" name="publish" value="publish">
-                <label>publish</label>
-              </div>
-              <div class="mb-3">
-                <a href="index.php" class="btn btn-secondary">Back</a>
-                <input type="submit" value="update" class="btn btn-primary float-end" name="edit">
-              </div>
-            </form>
-          </div>
+                    <div class="card-body">
+                        <form action="" method="post">
+                            <div class="mb-3">
+                                <label>Title</label>
+                                <input type="text" class="form-control" name="title"
+                                    value="<?php echo $data['title'] ?>">
+                                <span class="text-danger"><?php echo $title_error; ?></span>
+                            </div>
+                            <div class="mb-3">
+                                <label>Content</label>
+                                <textarea name="content" rows="5" cols="30"
+                                    class="form-control"><?php echo $data['content'] ?></textarea>
+                                <span class="text-danger"><?php echo $content_error; ?></span>
+                            </div>
+                            <div class="mb-3">
+                                <input type="checkbox" name="publish" value="publish">
+                                <label>publish</label>
+                            </div>
+                            <div class="mb-3">
+                                <a href="index.php" class="btn btn-secondary">Back</a>
+                                <input type="submit" value="update" class="btn btn-primary float-end" name="edit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </body>
 
 </html>

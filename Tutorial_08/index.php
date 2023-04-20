@@ -6,40 +6,40 @@ require_once "db.php";
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>post list</title>
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="libs/bootstrap-5.0.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>post list</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="libs/bootstrap-5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-  <div class="container mt-5">
+    <div class="container mt-5">
 
-    <div class="btn btn-primary mb-3">
-      <a href="create.php" class="text-decoration-none text-light"> create</a>
-    </div>
-    <div class="card">
-      <div class="card-header">
-        <h2>Post List</h2>
-      </div>
-      <div class="card-body">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Title</th>
-              <th scope="col">Content</th>
-              <th scope="col">Is Published</th>
-              <th scope="col">Created Date</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
+        <div class="btn btn-primary mb-3">
+            <a href="create.php" class="text-decoration-none text-light"> create</a>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <h2>Post List</h2>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Content</th>
+                            <th scope="col">Is Published</th>
+                            <th scope="col">Created Date</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
 $sql = "SELECT * FROM  lists";
 $result = mysqli_query($conn, $sql);
 if ($result) {
@@ -87,23 +87,25 @@ if ($result) {
 }
 
 ?>
-          </tbody>
-        </table>
-      </div>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <script src="libs/js/jquery-3.6.0.min.js"></script>
-  <script src="libs/bootstrap-5.0.2/js/bootstrap.min.js"></script>
-  <script>
-  $(document).ready(function() {
-    $('.delete-btn').on('click', function() {
-      var id = $(this).data('id');
-      if (confirm("Are you sure to delete this post?")) {
-        window.location.href = 'delete.php?deleteid=' + id;
-      }
+    <script src="libs/js/jquery-3.6.0.min.js"></script>
+    <script src="libs/bootstrap-5.0.2/js/bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('.delete-btn').on('click', function() {
+            var id = $(this).data('id');
+            if (confirm("Are you sure to delete this post?")) {
+                window.location.href = 'delete.php?deleteid=' + id;
+            }
+        });
     });
-  });
-  </script>
+    </script>
 
-</body
+</body>
+
+</html>

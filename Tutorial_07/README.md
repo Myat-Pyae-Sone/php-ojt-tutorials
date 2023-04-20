@@ -3,6 +3,7 @@
 ## Create a QR code generate form and save QR code images. Then display the QR code images again.
 
 ## Folder Structure
+
 ```
 .
 css/
@@ -21,7 +22,8 @@ README.md
 ```
 
 ## Validation Rules
+
 - required
 - QR name field is required
 
-![preview.png](preview.png)
+![preview.png](demo/preview.png)

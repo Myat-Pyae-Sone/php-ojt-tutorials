@@ -6,48 +6,48 @@ require_once "_dummy.php";
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>post list</title>
-  <link rel="stylesheet" href="css/reset.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>post list</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
 
 </head>
 
 <body>
 
-  <div class="container mt-5">
+    <div class="container mt-5">
 
-    <div class="card border-0">
-      <div class="card-body bg-light">
-        <div class="btn btn-primary mb-3">
-          <a href="create.php" class="text-decoration-none text-light"> create</a>
+        <div class="card border-0">
+            <div class="card-body bg-light">
+                <div class="btn btn-primary mb-3">
+                    <a href="create.php" class="text-decoration-none text-light"> create</a>
+                </div>
+                <div class="btn btn-primary mb-3">
+                    <a href="graph/_weekly.php" class="text-decoration-none text-light"> graph</a>
+                </div>
+            </div>
         </div>
-        <div class="btn btn-primary mb-3">
-          <a href="graph/_weekly.php" class="text-decoration-none text-light"> graph</a>
-        </div>
-      </div>
-    </div>
 
-    <div class="card">
-      <div class="card-header">
-        <h2>Post List</h2>
-      </div>
-      <div class="card-body">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Title</th>
-              <th scope="col">Content</th>
-              <th scope="col">Is Published</th>
-              <th scope="col">Created Date</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
+        <div class="card">
+            <div class="card-header">
+                <h2>Post List</h2>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Content</th>
+                            <th scope="col">Is Published</th>
+                            <th scope="col">Created Date</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
 $sql = "SELECT * FROM lists LIMIT 5";
 $result = mysqli_query($conn, $sql);
 if ($result) {
@@ -94,15 +94,15 @@ if ($result) {
     }
 }
 ?>
-          </tbody>
-        </table>
-      </div>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <script src="js/jquery-3.6.0.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/model.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/model.js"></script>
 
 </body>
 
