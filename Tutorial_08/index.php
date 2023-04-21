@@ -1,5 +1,16 @@
 <?php
 require_once "db.php";
+if (isset($_GET['deleteid'])) {
+    $id = $_GET['deleteid'];
+    $sql = "DELETE FROM Lists WHERE id=$id";
+    $result = mysqli_query($conn, $sql);
+    if ($result) {
+        echo "<script>window.location.href='index.php'</script>";
+    } else {
+        echo "<script>alert('Error deleting data.')</script>";
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +27,6 @@ require_once "db.php";
 </head>
 
 <body>
-
     <div class="container mt-5">
 
         <div class="btn btn-primary mb-3">
@@ -52,38 +62,42 @@ if ($result) {
         $formatted_date = date("M d, Y", strtotime($created_datetime));
         $is_published = $row['is_published'];
         if ($is_published == 0) {
-            $check_public = "Unpublished";
+            $check_publish = "Unpublished";
         } else {
-            $check_public = "published";
+            $check_publish = "published";
         }
 
-        if (strlen($content) > 50) {
-            $content = substr($content, 0, 50) . "...";
+        if (strlen($content) > 30) {
+            $content = substr($content, 0, 30) . "...";
         }
         if (strlen($title) >= 10) {
             $title = substr($title, 0, 10) . "...";
         }
-        echo '
-                                    <tr>
-                                        <th scope="row">' . $id . '</th>
-                                        <td>' . $title . '</td>
-                                        <td>' . $content . '</td>
-                                        <td>' . $check_public . '</td>
-                                        <td>' . $formatted_date . '</td>
-                                        <td>
-                                        <button type="button" class="btn btn-info">
-                                            <a href="detail.php? viewid=' . $id . ' " class="text-dark text-decoration-none">View</a>
-                                        </button>
-                                            <button type="button" class="btn btn-success">
-                                                <a href="edit.php? updateid=' . $id . ' " class="text-light text-decoration-none">Edit</a>
-                                            </button>
-                                            <button type="button" class="btn btn-danger delete-btn" data-id="' . $id . '">
-                                                Delete
-                                            </button>
-                                        </td>
-                                    </tr> ';
-
-    }
+        ?>
+                        <tr>
+                            <th scope="row"><?=$id?></th>
+                            <td><?=$title?></td>
+                            <td><?=$content?></td>
+                            <td><?=$check_publish?> </td>
+                            <td><?=$formatted_date?></td>
+                            <td>
+                                <button type="button" class="btn btn-info">
+                                    <a href="detail.php? viewid=<?php echo $id ?> "
+                                        class="text-dark text-decoration-none">View</a>
+                                </button>
+                                <button type="button" class="btn btn-success">
+                                    <a href="edit.php? updateid=<?php echo $id ?> "
+                                        class="text-light text-decoration-none">Edit</a>
+                                </button>
+                                <form action="index.php" method="get" class="d-inline">
+                                    <a href="index.php?deleteid=<?=$row['id'];?>" name="delete"
+                                        onclick="return confirm('Are you sure u want to delete?')"
+                                        class="btn btn-danger">Delete</a>
+                                </form>
+                            </td>
+                        </tr>
+                        <?php
+}
 }
 
 ?>
@@ -94,17 +108,7 @@ if ($result) {
     </div>
 
     <script src="libs/js/jquery-3.6.0.min.js"></script>
-    <script src="libs/bootstrap-5.0.2/js/bootstrap.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        $('.delete-btn').on('click', function() {
-            var id = $(this).data('id');
-            if (confirm("Are you sure to delete this post?")) {
-                window.location.href = 'delete.php?deleteid=' + id;
-            }
-        });
-    });
-    </script>
+    <script src="js/delete.js"></script>
 
 </body>
 

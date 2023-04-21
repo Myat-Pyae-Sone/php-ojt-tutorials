@@ -5,7 +5,7 @@ $title = $content = '';
 $id = $_GET['updateid'];
 $sql = "SELECT * FROM lists WHERE id=$id"; //select data from lists table
 $query = mysqli_query($conn, $sql); //get connection
-$data = mysqli_fetch_assoc($query); //get data
+$data = mysqli_fetch_assoc($query); //get data from query
 
 if (isset($_POST['edit'])) {
     if (empty($_POST['title'])) {
@@ -19,6 +19,7 @@ if (isset($_POST['edit'])) {
     } else {
         $content = $_POST['content'];
     }
+
     if (empty($title_error) && empty($content_error)) {
         $publish = isset($_POST['publish']) ? 1 : 0;
         $sql = "UPDATE lists SET
@@ -77,7 +78,7 @@ if (isset($_POST['edit'])) {
                                 <span class="text-danger"><?php echo $content_error; ?></span>
                             </div>
                             <div class="mb-3">
-                                <input type="checkbox" name="publish" value="publish">
+                                <input type="checkbox" name="publish" value="<?php echo $publish ?>">
                                 <label>publish</label>
                             </div>
                             <div class="mb-3">

@@ -52,17 +52,19 @@ session_start();
                 </form>
             </div>
         </div>
-        <div class="row m-auto bg-light">
+        <div class="row row-cols-3 g-4 p-4  my-5 bg-light">
             <?php
 
 ob_start();
 $files = glob('images/*/*.{jpg,jpeg,png}', GLOB_BRACE);
 foreach ($files as $file): ?>
-            <?php $folder = basename(dirname($file));?>
+            <?php
+$folder = basename(dirname($file));
+$imgName = basename($file);?>
             <div class="col">
                 <div class='card m-auto w-75 d-flex flex-column me-2 mt-4 ms-5 mt-3'>
                     <img class='img-size' src='<?php echo $file; ?>' class='w-100 mt-3 '>
-                    <p class='text-center mb-0 fs-4'><?php echo $folder; ?></p><br>
+                    <p class='text-center mb-0 fs-4'><?php echo $imgName; ?></p><br>
                     <p class='ms-2 mt-0 w-100'><a href='<?php echo $file; ?>'
                             class=' mt-0 '>localhost/php-ojt-tutorials/Tutorial_06/<?php echo $file ?></a></p>
 

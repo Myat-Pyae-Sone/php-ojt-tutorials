@@ -39,9 +39,9 @@ if (isset($_GET['viewid'])) {
 $format = $post['created_datetime'];
 $formatted_date = date("M d, Y", strtotime($format));
 if ($post['is_published']) {
-    echo "Published  at" . '&nbsp;' . '<i>' . $formatted_date . '</i>';
+    echo "<i>Published  at" . '&nbsp;' . $formatted_date . '</i>';
 } else {
-    echo "Is not published" . '&nbsp;' . '<i>' . $formatted_date . '</i>';
+    echo "<i>Is not published" . '&nbsp;' . $formatted_date . '</i>';
 }
 ?>
                         </p>

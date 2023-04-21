@@ -132,8 +132,6 @@ if ($userProfile == '') {
                     <input type="submit" name="update" value="Update" class="btn btn-primary float-end">
                 </div>
             </form>
-            <?php
-?>
         </div>
     </div>
     <script src="../js/script.js"></script>

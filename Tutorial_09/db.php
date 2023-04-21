@@ -12,9 +12,9 @@ $sql = "CREATE TABLE IF NOT EXISTS `lists` (
   id INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(255) NOT NULL,
   content TEXT(255) NOT NULL,
-  is_published VARCHAR(10),
-  created_datetime timestamp default current_timestamp,
-  updated_datetime timestamp default current_timestamp
+  is_published BOOLEAN,
+  created_datetime TIMESTAMP DEFAULT current_timestamp,
+  updated_datetime TIMESTAMP DEFAULT current_timestamp
   )";
 
 if (mysqli_query($conn, $sql)) {

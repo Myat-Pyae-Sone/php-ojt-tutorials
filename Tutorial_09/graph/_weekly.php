@@ -16,13 +16,13 @@ while ($row = mysqli_fetch_assoc($result)) {
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weekly Posts</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weekly Posts</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 
 <body>
@@ -34,69 +34,69 @@ while ($row = mysqli_fetch_assoc($result)) {
 <html>
 
 <head>
-  <title>Daily Posts</title>
-  <link rel="stylesheet" href="../css/reset.css">
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
-  <script src="../libs/chart.umd.js"></script>
+    <title>Daily Posts</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../libs/bootstrap-5.0.2//css/bootstrap.min.css">
+    <script src="../libs/chart.umd.js"></script>
 </head>
 
 <body>
-  <div class="container">
-    <div class="card  border-0">
-      <div class="card-header border-bottom-0 bg-white  mb-3">
-        <div class="btn  btn btn-secondary">
-          <a href="../index.php" class="text-decoration-none text-light">Back</a>
+    <div class="container">
+        <div class="card  border-0">
+            <div class="card-header border-bottom-0 bg-white  mb-3">
+                <div class="btn  btn btn-secondary">
+                    <a href="../index.php" class="text-decoration-none text-light">Back</a>
+                </div>
+                <div class="float-end  ">
+                    <div class="btn  btn btn-secondary">
+                        <a href="#" class="text-decoration-none text-light ">Weekly</a>
+                    </div>
+                    <div class="btn btn-outline-secondary">
+                        <a href="../graph/_monthly.php" class="text-decoration-none text-dark">Monthly</a>
+                    </div>
+                    <div class="btn btn-outline-secondary">
+                        <a href="../graph/_yearly.php" class="text-decoration-none text-dark">Yearly</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <canvas id="myChart"></canvas>
+            </div>
         </div>
-        <div class="float-end  ">
-          <div class="btn  btn btn-secondary">
-            <a href="#" class="text-decoration-none text-light">Weekly</a>
-          </div>
-          <div class="btn btn-outline-secondary">
-            <a href="../graph/_monthly.php" class="text-decoration-none text-secondary">Monthly</a>
-          </div>
-          <div class="btn btn-outline-secondary">
-            <a href="../graph/_yearly.php" class="text-decoration-none text-secondary">Yearly</a>
-          </div>
-        </div>
-      </div>
-      <div class="card-body">
-        <canvas id="myChart"></canvas>
-      </div>
     </div>
-  </div>
 
-  <script>
-  var data = <?php echo json_encode($data); ?>;
-  var ctx = document.getElementById('myChart').getContext('2d');
-  var chart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: <?php echo json_encode($days_of_week); ?>,
-      datasets: [{
-        label: '#Weekly Post Create',
-        data: Object.values(data),
-        backgroundColor: 'rgba(54, 162, 235, 0.2)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }],
-        xAxes: [{
-          ticks: {
-            autoSkip: false,
-            maxRotation: 0
-          }
-        }]
-      }
-    }
-  });
-  </script>
+    <script>
+    var data = <?php echo json_encode($data); ?>;
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: <?php echo json_encode($days_of_week); ?>,
+            datasets: [{
+                label: '#Weekly Post Create',
+                data: Object.values(data),
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }],
+                xAxes: [{
+                    ticks: {
+                        autoSkip: false,
+                        maxRotation: 0
+                    }
+                }]
+            }
+        }
+    });
+    </script>
 </body>
 
 </html>
