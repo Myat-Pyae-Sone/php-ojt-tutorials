@@ -22,7 +22,7 @@ if (isset($_GET['deleteid'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>post list</title>
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="libs/bootstrap-5.0.2//css/bootstrap.min.css">
 
 </head>
 
@@ -59,57 +59,53 @@ if (isset($_GET['deleteid'])) {
                     </thead>
                     <tbody>
                         <?php
-$sql = "SELECT * FROM lists LIMIT 5";
-$result = mysqli_query($conn, $sql);
-if ($result) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $id = $row['id'];
-        $title = $row['title'];
-        $content = $row['content'];
-        $is_published = $row['is_published'];
-        $created_datetime = $row['created_datetime'];
-        $formatted_date = date("M d, Y", strtotime($created_datetime));
-        $is_published = $row['is_published'];
-        if ($is_published == 0) {
-            $check_publish = "Unpublished";
-        } else {
-            $check_publish = "published";
-        }
+                        $sql = "SELECT * FROM lists LIMIT 5";
+                        $result = mysqli_query($conn, $sql);
+                        if ($result) {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                $id = $row['id'];
+                                $title = $row['title'];
+                                $content = $row['content'];
+                                $is_published = $row['is_published'];
+                                $created_datetime = $row['created_datetime'];
+                                $formatted_date = date("M d, Y", strtotime($created_datetime));
+                                $is_published = $row['is_published'];
+                                if ($is_published == 0) {
+                                    $check_publish = "Unpublished";
+                                } else {
+                                    $check_publish = "published";
+                                }
 
-        if (strlen($content) > 30) {
-            $content = substr($content, 0, 30) . "...";
-        }
-        if (strlen($title) >= 10) {
-            $title = substr($title, 0, 10) . "...";
-        }
-        ?>
-                        <tr>
-                            <th scope="row"><?=$id?></th>
-                            <td><?=$title?></td>
-                            <td><?=$content?></td>
-                            <td><?=$check_publish?> </td>
-                            <td><?=$formatted_date?></td>
-                            <td>
-                                <button type="button" class="btn btn-info">
-                                    <a href="detail.php? viewid=<?php echo $id ?>  "
-                                        class="text-dark text-decoration-none">View</a>
-                                </button>
-                                <button type="button" class="btn btn-success">
-                                    <a href="edit.php? updateid=<?php echo $id ?>  "
-                                        class="text-light text-decoration-none">Edit</a>
-                                </button>
-                                <form action="index.php" method="get" class="d-inline">
-                                    <a href="index.php?deleteid=<?=$row['id'];?>" name="delete"
-                                        onclick="return confirm('Are you sure u want to delete?')"
-                                        class="btn btn-danger">Delete</a>
-                                </form>
-                            </td>
-                        </tr>
+                                if (strlen($content) > 30) {
+                                    $content = substr($content, 0, 30) . "...";
+                                }
+                                if (strlen($title) >= 10) {
+                                    $title = substr($title, 0, 10) . "...";
+                                }
+                        ?>
+                                <tr>
+                                    <th scope="row"><?= $id ?></th>
+                                    <td><?= $title ?></td>
+                                    <td><?= $content ?></td>
+                                    <td><?= $check_publish ?> </td>
+                                    <td><?= $formatted_date ?></td>
+                                    <td>
+                                        <button type="button" class="btn btn-info">
+                                            <a href="detail.php? viewid=<?php echo $id ?>  " class="text-dark text-decoration-none">View</a>
+                                        </button>
+                                        <button type="button" class="btn btn-success">
+                                            <a href="edit.php? updateid=<?php echo $id ?>  " class="text-light text-decoration-none">Edit</a>
+                                        </button>
+                                        <form action="index.php" method="get" class="d-inline">
+                                            <a href="index.php?deleteid=<?= $row['id']; ?>" name="delete" onclick="return confirm('Are you sure u want to delete?')" class="btn btn-danger">Delete</a>
+                                        </form>
+                                    </td>
+                                </tr>
                         <?php
 
-    }
-}
-?>
+                            }
+                        }
+                        ?>
                     </tbody>
                 </table>
             </div>

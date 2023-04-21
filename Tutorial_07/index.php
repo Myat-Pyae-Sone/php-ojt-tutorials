@@ -1,4 +1,4 @@
-<?php session_start()?>
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,11 +48,11 @@
         </div>
         <div class="card-body row">
             <?php
-$folder_dir = 'images/'; //folder_directory of img
-$img = scandir($folder_dir);?>
-            <?php for ($i = 0; $i < count($img); $i++): ?>
-            <?php if ($img[$i] != '.' && $img[$i] != '..'): ?>
-            <?php $filePath = 'images/$imgName/$fileImage[$i]';?>
+            $folder_dir = 'images/'; //folder_directory of img
+            $img = scandir($folder_dir); ?>
+            <?php for ($i = 0; $i < count($img); $i++) : ?>
+            <?php if ($img[$i] != '.' && $img[$i] != '..') : ?>
+            <?php $filePath = 'images/$imgName/$fileImage[$i]'; ?>
             <div class='col-sm-4 '>
                 <div class='card m-4'>
                     <p class='text-center'><img src='<?php echo $folder_dir . $img[$i] ?>' alt='Image' class=' w-75'>
@@ -60,8 +60,8 @@ $img = scandir($folder_dir);?>
                     <p class='text-center mb-0 pb-3'><?php echo $img[$i] ?></p>
                 </div>
             </div>
-            <?php endif;?>
-            <?php endfor;?>
+            <?php endif; ?>
+            <?php endfor; ?>
         </div>
     </div>
 </body>

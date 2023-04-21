@@ -55,12 +55,12 @@ session_start();
         <div class="row row-cols-3 g-4 p-4  my-5 bg-light">
             <?php
 
-ob_start();
-$files = glob('images/*/*.{jpg,jpeg,png}', GLOB_BRACE);
-foreach ($files as $file): ?>
+            ob_start();
+            $files = glob('images/*/*.{jpg,jpeg,png}', GLOB_BRACE);
+            foreach ($files as $file) : ?>
             <?php
-$folder = basename(dirname($file));
-$imgName = basename($file);?>
+                $folder = basename(dirname($file));
+                $imgName = basename($file); ?>
             <div class="col">
                 <div class='card m-auto w-75 d-flex flex-column me-2 mt-4 ms-5 mt-3'>
                     <img class='img-size' src='<?php echo $file; ?>' class='w-100 mt-3 '>
@@ -75,17 +75,17 @@ $imgName = basename($file);?>
                     </form>
                 </div>
             </div>
-            <?php endforeach;?>
+            <?php endforeach; ?>
             <?php if (isset($_POST['delete'])) {
-    $filePath = $_POST['file_path'];
-    if (file_exists($filePath)) {
-        unlink($filePath);
-        header("Refresh:0");
-    }
-}
-ob_end_flush(); //delete file
+                $filePath = $_POST['file_path'];
+                if (file_exists($filePath)) {
+                    unlink($filePath);
+                    header("Refresh:0");
+                }
+            }
+            ob_end_flush(); //delete file
 
-?>
+            ?>
         </div>
     </div>
 </body>

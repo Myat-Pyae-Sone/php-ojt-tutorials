@@ -73,8 +73,8 @@ if (isset($_POST['edit'])) {
                             </div>
                             <div class="mb-3">
                                 <label>Content</label>
-                                <textarea name="content" rows="5" cols="30"
-                                    class="form-control"><?php echo $data['content'] ?></textarea>
+                                <textarea name="content" rows="5" cols="30" class="form-control"><?php echo $data['content'] ?>
+                            </textarea>
                                 <span class="text-danger"><?php echo $content_error; ?></span>
                             </div>
                             <div class="mb-3">

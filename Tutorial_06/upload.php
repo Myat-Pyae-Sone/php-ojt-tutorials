@@ -12,7 +12,7 @@ if (isset($_POST['upload'])) {
 
         //image extention validate
         $allowedExt = array('jpg', 'jpeg', 'png');
-        $imgExt = strtolower(pathinfo($imageName['name'], PATHINFO_EXTENSION));
+        $imgExt = pathinfo($imageName['name'], PATHINFO_EXTENSION);
 
         if (!in_array($imgExt, $allowedExt)) {
             $_SESSION['errorMessage']['image'] = 'Image file extension must be jpg, jpeg or png.';
