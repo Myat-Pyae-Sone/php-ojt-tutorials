@@ -51,7 +51,6 @@ if (isset($_POST['upload'])) {
             header('Location: index.php');
             exit();
         }
-
     } else {
         if (empty($folderName['folder'])) {
             $_SESSION['errorMessage']['folder'] = 'folder name field is required.';

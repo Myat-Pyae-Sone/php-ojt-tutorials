@@ -31,7 +31,7 @@ session_start();
                 <form action="upload.php" class="px-3 py-3" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="folder" class="form-label">Folder Name</label>
-                        <input type="text" class="form-control
+                        <input type="text" name='folder' class="form-control 
                     <?php echo isset($_SESSION['errorMessage']['folder']) ? "is-invalid" : ""; ?>"
                             value="<?php echo !empty($_SESSION['folderName']) ? $_SESSION['folderName'] : ""; ?>"
                             name="folder" placeholder="Enter folder Name...">
@@ -66,7 +66,7 @@ session_start();
                     <img class='img-size' src='<?php echo $file; ?>' class='w-100 mt-3 '>
                     <p class='text-center mb-0 fs-4'><?php echo $imgName; ?></p><br>
                     <p class='ms-2 mt-0 w-100'><a href='<?php echo $file; ?>'
-                            class=' mt-0 '>localhost/php-ojt-tutorials/Tutorial_06/<?php echo $file ?></a></p>
+                            class=' mt-0 '>localhost/php-ojt-tutorials/<?php echo $file ?></a></p>
 
                     <form method='post' class='w-100'>
                         <input type='hidden' name='file_path' value='<?php echo $file; ?>'>
