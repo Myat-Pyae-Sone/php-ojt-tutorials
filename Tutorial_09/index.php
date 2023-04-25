@@ -83,24 +83,28 @@ if (isset($_GET['deleteid'])) {
                                     $title = substr($title, 0, 10) . "...";
                                 }
                         ?>
-                                <tr>
-                                    <th scope="row"><?= $id ?></th>
-                                    <td><?= $title ?></td>
-                                    <td><?= $content ?></td>
-                                    <td><?= $check_publish ?> </td>
-                                    <td><?= $formatted_date ?></td>
-                                    <td>
-                                        <button type="button" class="btn btn-info">
-                                            <a href="detail.php? viewid=<?php echo $id ?>  " class="text-dark text-decoration-none">View</a>
-                                        </button>
-                                        <button type="button" class="btn btn-success">
-                                            <a href="edit.php? updateid=<?php echo $id ?>  " class="text-light text-decoration-none">Edit</a>
-                                        </button>
-                                        <form action="index.php" method="get" class="d-inline">
-                                            <a href="index.php?deleteid=<?= $row['id']; ?>" name="delete" onclick="return confirm('Are you sure u want to delete?')" class="btn btn-danger">Delete</a>
-                                        </form>
-                                    </td>
-                                </tr>
+                        <tr>
+                            <th scope="row"><?= $id ?></th>
+                            <td><?= $title ?></td>
+                            <td><?= $content ?></td>
+                            <td><?= $check_publish ?> </td>
+                            <td><?= $formatted_date ?></td>
+                            <td>
+                                <button type="button" class="btn btn-info">
+                                    <a href="detail.php? viewid=<?php echo $id ?>  "
+                                        class="text-dark text-decoration-none">View</a>
+                                </button>
+                                <button type="button" class="btn btn-success">
+                                    <a href="edit.php? updateid=<?php echo $id ?>  "
+                                        class="text-light text-decoration-none">Edit</a>
+                                </button>
+                                <form action="index.php" method="get" class="d-inline">
+                                    <a href="index.php?deleteid=<?= $row['id']; ?>" name="delete"
+                                        onclick="return confirm('Are you sure u want to delete?')"
+                                        class="btn btn-danger">Delete</a>
+                                </form>
+                            </td>
+                        </tr>
                         <?php
 
                             }
@@ -112,7 +116,7 @@ if (isset($_GET['deleteid'])) {
         </div>
     </div>
 
-    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="libs/jquery-3.6.0.min.js"></script>
     <script src="js/delete.js"></script>
 
 </body>

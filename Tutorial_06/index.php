@@ -32,7 +32,7 @@ session_start();
                     <div class="mb-3">
                         <label for="folder" class="form-label">Folder Name</label>
                         <input type="text" name='folder' class="form-control 
-                    <?php echo isset($_SESSION['errorMessage']['folder']) ? "is-invalid" : ""; ?>"
+                    <?php echo !empty($_SESSION['errorMessage']['folder']) ? "is-invalid" : ""; ?>"
                             value="<?php echo !empty($_SESSION['folderName']) ? $_SESSION['folderName'] : ""; ?>"
                             name="folder" placeholder="Enter folder Name...">
                         <div class="invalid-feedback">
@@ -42,7 +42,7 @@ session_start();
                     <div class="mb-3">
                         <label for="image" class="form-label">Choose Image</label>
                         <input type="file" name="image" id="image" class="form-control
-                    <?php echo isset($_SESSION['errorMessage']['image']) ? "is-invalid" : ""; ?>
+                    <?php echo !empty($_SESSION['errorMessage']['image']) ? "is-invalid" : ""; ?>
                     ">
                         <div class="invalid-feedback">
                             <?php echo $_SESSION['errorMessage']['image']; ?>

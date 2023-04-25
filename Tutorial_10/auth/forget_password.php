@@ -3,13 +3,14 @@ require_once '../db.php';
 session_start();
 
 use PHPMailer\PHPMailer\PHPMailer;
+
 require '../libs/phpmailer/src/Exception.php';
 require '../libs/phpmailer/src/PHPMailer.php';
 require '../libs/phpmailer/src/SMTP.php';
 
 if (isset($_POST["reset"])) {
     $email = $_POST["email"];
-    $sql = "SELECT * FROM user
+    $sql = "SELECT * FROM users
         WHERE email='" . $email . "'";
     $query = mysqli_query($conn, $sql);
     $totalRow = mysqli_num_rows($query); //total row
@@ -39,7 +40,7 @@ if (isset($_POST["reset"])) {
         $mail->send();
         echo "<script>alert('Message Sent');</script>";
     } else {
-        echo "Fail";
+        echo "<script>alert('Message Sent fail');</script>";
     }
 }
 
@@ -57,8 +58,8 @@ if (isset($_POST["reset"])) {
 
 <body>
     <div class="container">
-        <div class="w-50 d-flex align-items-center mx-auto mt-5 justify-content-center ">
-            <div class="card w-75">
+        <div class="w-75 d-flex align-items-center mx-auto mt-5 justify-content-center ">
+            <div class="card w-50">
                 <div class="card-header">
                     <h3> Forget Password</h3>
                 </div>
@@ -66,8 +67,7 @@ if (isset($_POST["reset"])) {
                     <form action="" method="POST" class="needs-validation" novalidate>
                         <div class="mb-3">
                             <label for="email_address" class="mb-2">Email</label>
-                            <input type="text" class="form-control" placeholder="name@example.com" name="email"
-                                required>
+                            <input type="text" class="form-control" placeholder="name@example.com" name="email" required>
                             <div class="invalid-feedback">Email is required.</div>
                         </div>
                 </div>

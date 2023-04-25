@@ -1,12 +1,12 @@
 <?php
 require_once 'db.php';
-$title_error = $content_error = '';
+$title_error = $content_error =  '';
 $title = $content = '';
 $id = $_GET['updateid'];
 $sql = "SELECT * FROM lists WHERE id=$id"; //select data from lists table
 $query = mysqli_query($conn, $sql); //get connection
 $data = mysqli_fetch_assoc($query); //get data from query
-
+$is_published = $data['is_published'];
 if (isset($_POST['edit'])) {
     if (empty($_POST['title'])) {
         $title_error = 'Title field is required';
@@ -20,8 +20,10 @@ if (isset($_POST['edit'])) {
         $content = $_POST['content'];
     }
 
+
     if (empty($title_error) && empty($content_error)) {
         $publish = isset($_POST['publish']) ? 1 : 0;
+
         $sql = "UPDATE lists SET
                         title='$title',
                         content='$content',
@@ -78,7 +80,7 @@ if (isset($_POST['edit'])) {
                                 <span class="text-danger"><?php echo $content_error; ?></span>
                             </div>
                             <div class="mb-3">
-                                <input type="checkbox" name="publish" value="<?php echo $publish ?>">
+                                <input type="checkbox" name="publish" <?php if ($is_published == 1) echo 'checked' ?>>
                                 <label>publish</label>
                             </div>
                             <div class="mb-3">

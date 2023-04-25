@@ -58,12 +58,13 @@ if (isset($_POST['create'])) {
                         <form action="" method="post">
                             <div class="mb-3">
                                 <label>Title</label>
-                                <input type="text" class="form-control" name="title">
+                                <input type="text" class="form-control" name="title" value="<?php echo $title?>">
                                 <span class="text-danger"><?php echo $title_error; ?></span>
                             </div>
                             <div class="mb-3">
                                 <label>Content</label>
-                                <textarea name="content" rows="5" cols="30" class="form-control"></textarea>
+                                <textarea name="content" rows="5" cols="30"
+                                    class="form-control"><?php echo $content?></textarea>
                                 <span class="text-danger"><?php echo $content_error; ?></span>
                             </div>
                             <div class="mb-3">

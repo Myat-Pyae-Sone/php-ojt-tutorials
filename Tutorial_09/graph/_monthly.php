@@ -68,7 +68,7 @@ $post_counts_json = json_encode($post_counts);
                     '2022-01-28', '2022-01-29', '2022-01-30', '2022-01-31'
                 ],
                 datasets: [{
-                    label: 'Posts Created in January 2022',
+                    label: 'Posts Created in April 2023',
                     data: <?php echo $post_counts_json; ?>,
                     backgroundColor: 'rgba(54, 162, 235, 0.2)',
                     borderColor: 'rgba(54, 162, 235, 1)',

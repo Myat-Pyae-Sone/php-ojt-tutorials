@@ -20,7 +20,7 @@ require_once '../db.php';
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $userPwd = mysqli_real_escape_string($conn, $_POST['password']);
         $password = md5($userPwd);
-        $sql = "SELECT * FROM user WHERE email='$email' and password='$password'";
+        $sql = "SELECT * FROM users WHERE email='$email' and password='$password'";
         $query = mysqli_query($conn, $sql);
 
         if ($query) {
@@ -38,7 +38,7 @@ require_once '../db.php';
     }
 
     ?>
-    <div class="container w-50 mt-5 ">
+    <div class="container w-75 mt-5 ">
         <div class="card text-dark col-6 offset-3">
             <div class="card-header">
                 <h1>Login</h1>

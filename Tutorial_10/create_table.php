@@ -1,6 +1,6 @@
 <?php
 require_once "db.php";
-$sql = "CREATE TABLE IF NOT EXISTS `user` (
+$sql = "CREATE TABLE IF NOT EXISTS `users` (
   id INT(7) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
   email VARCHAR(255) NOT NULL UNIQUE ,
@@ -13,5 +13,5 @@ $sql = "CREATE TABLE IF NOT EXISTS `user` (
   )";
 
 if (!mysqli_query($conn, $sql)) {
-    echo "fail" . mysqli_connect_error();
+  echo "fail" . mysqli_connect_error();
 }

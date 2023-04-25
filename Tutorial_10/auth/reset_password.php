@@ -24,7 +24,7 @@ if (isset($_POST['confirm'])) {
 
     if (isset($_SESSION['email'])) {
         if ($password == $comfirmpassword) {
-            $sql = "UPDATE user
+            $sql = "UPDATE users
                     SET `password` = '$password'
                      WHERE (`email` = '$uEmail')";
             $query = mysqli_query($conn, $sql);

@@ -2,6 +2,7 @@
 require_once 'db.php';
 $title_error = $content_error = '';
 $title = $content = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['create'])) {
         if (empty($_POST['title'])) {
@@ -21,8 +22,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $publish = isset($_POST['publish']) ? 1 : 0;
             $sql = "INSERT INTO lists (title, content, is_published)
                      VALUES ('$title','$content','$publish')";
-            $result = mysqli_query($conn, $sql);
-            if ($result) {
+            $query = mysqli_query($conn, $sql);
+            $data = mysqli_fetch_assoc($query);
+            if ($query) {
                 echo "success";
             } else {
                 die(mysqli_connect_error($conn));
@@ -63,12 +65,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <form action="create.php" method="post">
                             <div class="mb-3">
                                 <label>Title</label>
-                                <input type="text" class="form-control" name="title">
+                                <input type="text" class="form-control" name="title" value="<?php echo $title ?>">
                                 <span class="text-danger"><?php echo $title_error; ?></span>
                             </div>
                             <div class="mb-3">
                                 <label>Content</label>
-                                <textarea name="content" rows="5" cols="30" class="form-control"></textarea>
+                                <textarea name="content" rows="5" cols="30"
+                                    class="form-control"><?php echo $content?></textarea>
                                 <span class="text-danger"><?php echo $content_error; ?></span>
                             </div>
                             <div class="mb-3">

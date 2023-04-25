@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+
 if (isset($_POST['upload'])) {
     $folderName = $_POST['folder'];
     $imageName = $_FILES['image'];
@@ -20,6 +21,13 @@ if (isset($_POST['upload'])) {
             exit();
         }
 
+        //image size validate
+        $fileSize = $_FILES['image']['size'];
+        if ($fileSize > 2097152) {
+            $_SESSION['errors']['image'] = 'Image file size must be less than 2 MB.';
+            header('Location: index.php');
+            exit();
+        }
         //Save image
         $folderPath = "images/$folderName";
         if (!is_dir($folderPath)) {
@@ -43,16 +51,8 @@ if (isset($_POST['upload'])) {
             $_SESSION['errorMessage']['image'] = 'Upload  Failed!';
             header('Location: index.php');
         }
-
-        //image size validate
-        $fileSize = $_FILES['image']['size'];
-        if ($fileSize > 2097152) {
-            $_SESSION['errors']['image'] = 'Image file size must be less than 2 MB.';
-            header('Location: index.php');
-            exit();
-        }
     } else {
-        if (empty($folderName['folder'])) {
+        if (empty($folderName)) {
             $_SESSION['errorMessage']['folder'] = 'folder name field is required.';
         }
         if (empty($imageName['name'])) {

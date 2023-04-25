@@ -37,14 +37,14 @@ if (isset($_GET['viewid'])) {
                         <h3><?php echo $post['title']; ?></h3>
                         <p>
                             <?php
-$format = $post['created_datetime'];
-$formatted_date = date("M d, Y", strtotime($format));
-if ($post['is_published']) {
-    echo "<i>Published  at" . '&nbsp;' . $formatted_date . '</i>';
-} else {
-    echo "<i>Is not published" . '&nbsp;' . $formatted_date . '</i>';
-}
-?>
+                            $format = $post['created_datetime'];
+                            $formatted_date = date("M d, Y", strtotime($format));
+                            if ($post['is_published']) {
+                                echo "<i>Published  at" . '&nbsp;' . $formatted_date . '</i>';
+                            } else {
+                                echo "<i>Is not published" . '&nbsp;' . $formatted_date . '</i>';
+                            }
+                            ?>
                         </p>
                         <p><?php echo $post['content']; ?></p>
                         <div class="mb-3">
