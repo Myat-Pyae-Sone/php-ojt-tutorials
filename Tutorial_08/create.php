@@ -23,7 +23,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $sql = "INSERT INTO lists (title, content, is_published)
                      VALUES ('$title','$content','$publish')";
             $query = mysqli_query($conn, $sql);
-            $data = mysqli_fetch_assoc($query);
             if ($query) {
                 echo "success";
             } else {
@@ -71,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div class="mb-3">
                                 <label>Content</label>
                                 <textarea name="content" rows="5" cols="30"
-                                    class="form-control"><?php echo $content?></textarea>
+                                    class="form-control"><?php echo $content ?></textarea>
                                 <span class="text-danger"><?php echo $content_error; ?></span>
                             </div>
                             <div class="mb-3">
