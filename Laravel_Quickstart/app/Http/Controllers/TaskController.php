@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Contracts\Services\TaskServiceInterface;
 use App\Models\Task;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
 {
@@ -19,14 +18,21 @@ class TaskController extends Controller
     {
         $this->taskService = $taskServiceInterface;
     }
-    //task page
+
+    /**
+     * tasks function
+     * @return object
+     */
     public function tasks()
     {
         $tasks = $this->taskService->getTask();
         return view('tasks', compact('tasks'));
     }
 
-    //add task
+    /**
+     * add task function
+     * @return object
+     */
     public function addTask(Request $request)
     {
         $validator = $this->taskService->validateTask($request);
@@ -41,13 +47,16 @@ class TaskController extends Controller
         $task->name = $request->name;
         $task->save();
 
-        return redirect('/');
+        return redirect('/')->with(['createSuccess' => 'Task create successfully!']);
     }
 
-    // delete task
-    public function deleteTask(Task $task)
+    /**
+     * delete task function
+     * @return object
+     */
+    public function deleteTask($id)
     {
-        $this->taskService->deleteTask($task);
-        return redirect('/');
+        $this->taskService->deleteTask($id);
+        return redirect('/')->with(['deleteSuccess' => 'Task delete successfully!']);
     }
 }

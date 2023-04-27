@@ -2,14 +2,14 @@
 
 namespace App\Dao;
 
-use App\Models\Task;
 use App\Contracts\Dao\TaskDaoInterface;
+use App\Models\Task;
 use Illuminate\Support\Facades\Validator;
 
 class TaskDao implements TaskDaoInterface
 {
     /**
-     * Get task
+     * function Get task
      * @return object
      */
     public function getTask(): object
@@ -17,27 +17,29 @@ class TaskDao implements TaskDaoInterface
         return Task::orderBy('created_at', 'asc')->get();
     }
 
-
     /**
-     * validate task
+     * function validate task
      * @param $task
      * @return object
      */
     public function validateTask($request): object
     {
         return
-            Validator::make($request->all(), [
-                'name' => 'required|max:255',
-            ]);
+        Validator::make($request->all(), [
+            'name' => 'required|max:255',
+        ], [
+            'name.required' => 'Task Name field is required!',
+        ]);
     }
 
     /**
-     * Delete task
+     * function Delete task
      * @param $task
      * @return void
      */
-    public function deleteTask($task): void
+    public function deleteTask($id): void
     {
+        $task = Task::findOrFail($id);
         $task->delete();
     }
 }
