@@ -5,7 +5,7 @@ use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 //students
-Route::get('/', [StudentController::class, 'list'])->name('student.list');
+Route::get('/', [StudentController::class, 'index'])->name('student.index');
 Route::get('/create', [StudentController::class, 'create'])->name('student.create');
 Route::post('store', [StudentController::class, 'store'])->name('student.store');
 Route::get('/student/edit/{id}', [StudentController::class, 'edit'])->name('student.edit');
@@ -13,7 +13,7 @@ Route::post('/student/update/{id}', [StudentController::class, 'update'])->name(
 Route::get('/student/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
 
 // majors
-Route::get('/major', [MajorController::class, 'majorList'])->name('major.list');
+Route::get('/major', [MajorController::class, 'index'])->name('major.index');
 Route::get('/major/create', [MajorController::class, 'majorCreate'])->name('major.create');
 Route::post('/major/store', [MajorController::class, 'majorStore'])->name('major.store');
 Route::get('/major/edit/{id}', [MajorController::class, 'majorEdit'])->name('major.edit');

@@ -24,11 +24,11 @@ class StudentController extends Controller
         $this->studentService = $studentServiceInterface;
     }
     /**
-     * list page
+     * index page
      */
-    function list() {
+    function index() {
         $students = $this->studentService->getStudents();
-        return view('student.list', compact('students'));
+        return view('student.index', compact('students'));
     }
     /**
      * create page
@@ -60,7 +60,7 @@ class StudentController extends Controller
         ];
         $this->studentService->createStudent($data, $request);
 
-        return redirect()->route('student.list')->with(['createSuccess' => 'Successfully Created!']);
+        return redirect()->route('student.index')->with(['createSuccess' => 'Successfully Created!']);
 
     }
     /**
@@ -94,7 +94,7 @@ class StudentController extends Controller
         ];
         $this->studentService->updateStudent($data, $id);
 
-        return redirect()->route('student.list')->with(['updateSuccess' => 'Successfully updated!']);
+        return redirect()->route('student.index')->with(['updateSuccess' => 'Successfully updated!']);
 
     }
 
@@ -104,7 +104,7 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $this->studentService->deleteStudentById($id);
-        return redirect()->route('student.list')->with(['deleteSuccess' => 'Successfully deleted!']);
+        return redirect()->route('student.index')->with(['deleteSuccess' => 'Successfully deleted!']);
 
     }
 /**
@@ -123,7 +123,7 @@ class StudentController extends Controller
     {
         // dd($request->all());
         Excel::import(new ImportStudent, $request->file);
-        return redirect()->route('student.list')->with(['importSuccess' => 'File imported successfully!']);
+        return redirect()->route('student.index')->with(['importSuccess' => 'File imported successfully!']);
     }
     /**
      * export function

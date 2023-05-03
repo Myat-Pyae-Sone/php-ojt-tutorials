@@ -15,8 +15,8 @@
             <h5>Navbar</h5>
         </div>
         <div class="col-3 offset-2">
-            <a href="{{ route('student.list') }}" class='text-decoration-none text-dark'>Students</a>
-            <a href="{{ route('major.list') }}" class='text-decoration-none text-dark'>Majors</a>
+            <a href="{{ route('student.index') }}" class='text-decoration-none text-dark'>Students</a>
+            <a href="{{ route('major.index') }}" class='text-decoration-none text-dark'>Majors</a>
         </div>
     </header>
     @yield('content')
