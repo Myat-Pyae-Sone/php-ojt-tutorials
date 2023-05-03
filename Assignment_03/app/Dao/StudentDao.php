@@ -14,7 +14,7 @@ class StudentDao implements StudentDaoInterface
     public function getStudents(): object
     {
         return Student::select('students.*', 'majors.name as major_name')
-            ->orderBy('students.created_at', 'desc')
+            ->orderBy('students.created_at', 'asc')
             ->leftjoin('majors', 'students.major_id', 'majors.id')
             ->when(request('key'), function ($query) {
                 $query->where('majors.name', 'LIKE', '%' . request('key') . '%')

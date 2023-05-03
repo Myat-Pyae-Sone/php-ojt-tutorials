@@ -18,7 +18,7 @@
                             </div>
                         @enderror
                     </div>
-                    <a href="{{ route('major.list') }}" class='btn btn-sm btn-secondary'>Back</a>
+                    <a href="{{ route('major.index') }}" class='btn btn-sm btn-secondary'>Back</a>
                     <input type="submit" class='btn btn-sm btn-info text-dark float-end' value="Update">
                 </form>
             </div>

@@ -25,7 +25,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h5><b>Student Lists</b></h5>
-                <form action="{{ route('student.list') }}" method="get" class="d-flex">
+                <form action="{{ route('student.index') }}" method="get" class="d-flex">
                     @csrf
                     <input type="text" name="key" id="" class="form-control" placeholder="search">
                     <button class="btn btn-sm ms-2 btn-dark" type="submit">Search</button>
