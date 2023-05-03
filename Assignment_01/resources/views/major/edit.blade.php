@@ -6,7 +6,7 @@
                 <h5><b>Major Edit</b></h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('major#update', $major['id']) }}" method="POST">
+                <form action="{{ route('major.update', $major['id']) }}" method="POST">
                     @csrf
                     <div class='mb-3'>
                         <label for="">Name</label>
@@ -18,7 +18,7 @@
                             </div>
                         @enderror
                     </div>
-                    <a href="{{ route('major#list') }}" class='btn btn-sm btn-secondary'>Back</a>
+                    <a href="{{ route('major.index') }}" class='btn btn-sm btn-secondary'>Back</a>
                     <input type="submit" class='btn btn-sm btn-info text-dark float-end' value="Update">
                 </form>
             </div>

@@ -13,7 +13,7 @@ class MajorDao implements MajorDaoInterface
      */
     public function getMajors(): object
     {
-        return Major::orderBy('created_at', 'desc')->paginate(4);
+        return Major::orderBy('created_at', 'asc')->paginate(4);
 
     }
 
@@ -38,7 +38,6 @@ class MajorDao implements MajorDaoInterface
     {
         $major = Major::findOrFail($id);
         $major->update($data);
-
     }
 
     /**

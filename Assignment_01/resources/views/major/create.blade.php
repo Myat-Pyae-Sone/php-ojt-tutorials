@@ -6,7 +6,7 @@
                 <h5><b>Major Create</b></h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('major#create') }}" method="POST">
+                <form action="{{ route('major.store') }}" method="POST">
                     @csrf
                     <div class='mb-3'>
                         <label for="">Name</label>
@@ -18,7 +18,7 @@
                             </div>
                         @enderror
                     </div>
-                    <a href="{{ route('major#list') }}" class='btn btn-sm btn-secondary'>Back</a>
+                    <a href="{{ route('major.index') }}" class='btn btn-sm btn-secondary'>Back</a>
                     <input type="submit" class='btn btn-sm btn-primary float-end' value="Create">
                 </form>
             </div>

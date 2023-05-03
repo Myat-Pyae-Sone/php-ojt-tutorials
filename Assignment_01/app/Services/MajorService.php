@@ -52,7 +52,7 @@ class MajorService implements MajorServiceInterface
      */
     public function updateMajor(array $data, int $id): void
     {
-
+        $this->majorDao->updateMajor($data, $id);
     }
 
     /**

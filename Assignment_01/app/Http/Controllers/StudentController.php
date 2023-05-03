@@ -21,16 +21,17 @@ class StudentController extends Controller
         $this->studentService = $studentServiceInterface;
     }
     /**
-     * list page
+     * index page
      */
-    function list() {
+    public function index()
+    {
         $students = $this->studentService->getStudents();
-        return view('student.list', compact('students'));
+        return view('student.index', compact('students'));
     }
     /**
      * create page
      */
-    public function createPage()
+    public function create()
     {
         $majors = Major::select('id', 'name')->get();
         return view('student.create', compact('majors'));
@@ -39,7 +40,7 @@ class StudentController extends Controller
     /**
      * student create
      */
-    public function create(Request $request)
+    public function store(Request $request)
     {
         Validator::make($request->all(), [
             'studentName' => 'required',
@@ -57,7 +58,7 @@ class StudentController extends Controller
         ];
         $this->studentService->createStudent($data, $request);
 
-        return redirect()->route('student#list')->with(['createSuccess' => 'Successfully Created!']);
+        return redirect()->route('student.index')->with(['createSuccess' => 'Successfully Created!']);
 
     }
     /**
@@ -91,17 +92,17 @@ class StudentController extends Controller
         ];
         $this->studentService->updateStudent($data, $id);
 
-        return redirect()->route('student#list')->with(['updateSuccess' => 'Successfully updated!']);
+        return redirect()->route('student.index')->with(['updateSuccess' => 'Successfully updated!']);
 
     }
 
     /**
      * delete function
      */
-    public function delete($id)
+    public function destroy($id)
     {
         $this->studentService->deleteStudentById($id);
-        return redirect()->route('student#list')->with(['deleteSuccess' => 'Successfully deleted!']);
+        return redirect()->route('student.index')->with(['deleteSuccess' => 'Successfully deleted!']);
 
     }
 

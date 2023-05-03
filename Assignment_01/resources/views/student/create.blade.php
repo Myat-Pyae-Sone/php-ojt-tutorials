@@ -6,7 +6,7 @@
                 <h5><b>Student Create</b></h5>
             </div>
             <div class="card-body">
-                <form action="{{ route('student#create') }}" method="POST">
+                <form action="{{ route('student.store') }}" method="POST">
                     @csrf
                     <div class='mb-3'>
                         <label for="">Name</label>
@@ -53,7 +53,7 @@
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
-                    <a href="{{ route('student#list') }}" class='btn btn-sm btn-secondary'>Back</a>
+                    <a href="{{ route('student.index') }}" class='btn btn-sm btn-secondary'>Back</a>
                     <input type="submit" class='btn btn-sm btn-primary float-end' value="Create">
                 </form>
             </div>
