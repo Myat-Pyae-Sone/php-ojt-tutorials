@@ -13,9 +13,9 @@ Route::post('/student/update/{id}', [StudentController::class, 'update'])->name(
 Route::get('/student/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
 
 // majors
-Route::get('major', [MajorController::class, 'index'])->name('major.index');
-Route::get('major/create', [MajorController::class, 'majorCreate'])->name('major.create');
-Route::post('major/store', [MajorController::class, 'majorStore'])->name('major.store');
-Route::get('major/edit/{id}', [MajorController::class, 'majorEdit'])->name('major.edit');
-Route::post('major/update/{id}', [MajorController::class, 'majorUpdate'])->name('major.update');
-Route::get('major/{id}', [MajorController::class, 'majorDestroy'])->name('major.destroy');
+Route::get('/major', [MajorController::class, 'index'])->name('major.index');
+Route::get('/major/create', [MajorController::class, 'majorCreate'])->name('major.create');
+Route::post('/major/store', [MajorController::class, 'majorStore'])->name('major.store');
+Route::get('/major/edit/{id}', [MajorController::class, 'majorEdit'])->name('major.edit');
+Route::post('/major/update/{id}', [MajorController::class, 'majorUpdate'])->name('major.update');
+Route::get('/major/{id}', [MajorController::class, 'majorDestroy'])->name('major.destroy');

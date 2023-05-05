@@ -18,7 +18,7 @@ class MajorDao implements MajorDaoInterface
     }
 
     /**
-     * Save Major
+     * Save major
      * @param array
      * @return void
      */
