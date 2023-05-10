@@ -24,7 +24,7 @@ class StudentDao implements StudentDaoInterface
                     ->orwhere('students.address', 'LIKE', '%' . request('key') . '%');
             })
             
-            ->paginate(4);
+            ->paginate(4)
             ->appends(request()->all());
     }
 
